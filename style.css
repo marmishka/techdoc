@@ -70,7 +70,7 @@ html,body{
       color:rgb(43, 77, 82);
       text-align: left;
       font-family:'Baloo Bhaina',sans-serif;
-    margin-left:100px;
+    margin-left:25px;
     font-size:30px;
   }
   section footer{
@@ -199,16 +199,16 @@ footer a{
 
      
     }
-   
+  
     
   }
   @media only screen and (max-width: 500px){
   
  #navbar{
-   max-height: 295px;
+   max-height: 350px;
  }
  #main-doc{
-   margin-top:300px;
+   margin-top:355px;
  }
 
 
