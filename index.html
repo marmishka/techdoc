@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>TechDoc</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="style.css" rel="stylesheet">
+    
+</head>
+<body>
+    
+    <nav id="navbar">
+        <header>CSS Grid Layout</header>
+        <ul> 
+            <a class="nav-link" href="#What_is_a_grid?" rel="internal"><li>What is a grid?</li></a>
+            <a class="nav-link" href="#The_Grid_container" rel="internal"><li>The Grid container</li></a>
+            <a class="nav-link" href="#Grid_Tracks" rel="internal"><li>Grid Tracks</li></a>
+            <a class="nav-link" href="#The_fr_Unit" rel="internal"><li>The fr Unit</li></a>
+            <a class="nav-link" href="#The_repeat()_notation" rel="internal"><li style="border-bottom-width:1px;">The<code>repeat()</code>notation</li></a>
+        </ul>
+    </nav>
+
+             
+    <main id="main-doc" >
+        <section class="main-section" id="What_is_a_grid?">
+            <header>
+                <h1>What is a grid?</h1>
+            </header>
+            <article>
+            <p>A grid is an intersecting set of horizontal and vertical lines – one set defining columns and the other rows. Elements can be placed onto the grid, respecting these column and row lines. CSS grid layout has the following features:</p>
+            
+           
+            <ul>
+                    <li><h3>Fixed and flexible track sizes  </h3>
+                        <p>You can create a grid with fixed track sizes – using pixels for example. This sets the grid to the specified pixel which fits to the layout you desire. You can also create a grid using flexible sizes with percentages or with the new fr unit designed for this purpose.</p>
+                    </li>
+                    <li><h3>Item placement</h3>
+                    <p>You can place items into a precise location on the grid using line numbers, names or by targeting an area of the grid. Grid also contains an algorithm to control the placement of items not given an explicit position on the grid. </p>
+                    </li>
+                    <li><h3>Creation of additional tracks to hold content</h3>
+                        <p>You can define an explicit grid with grid layout but the specification also deals with the content added outside of a declared grid, which adds additional rows and columns when needed. Features such as adding “as many columns that will fit into a container” are included. </p>
+                    </li>
+                    <li><h3>Alignment control</h3>
+                        <p>Grid contains alignment features so that we can control how the items align once placed into a grid area, and how the entire grid is aligned. </p>                    
+                    </li>
+                    <li><h3>Control of overlapping content</h3>
+                        <p>More than one item can be placed into a grid cell or area, they can partially overlap each other. This layering may then be controlled with z-index property.</p>
+                    </li>
+            </ul>
+            <hr>
+                   <p>Grid is a powerful specification and when combined with other parts of CSS such as flexbox, can help you to create layouts that were previously impossible to build in CSS. It all starts by creating a grid in your <strong>grid container</strong>.</p>
+            </article>
+            <footer ><a href="#main-doc">UP</a></footer>
+            <br><hr>
+           
+        </section>
+        <section class="main-section" id="The_Grid_container">
+            <header>
+                <h1>The Grid container</h1>
+            </header>
+             <article>
+                 <p>We create a <em>grid container</em> by declaring <code>display: grid</code> or <code> display: inline-grid</code> on an element. As soon as we do this all <em>direct children</em> of that element will become <em>grid items</em>.</p>
+                 <p>In this example, I have a containing div with a class of wrapper, inside are five child elements.</p>            
+                
+                     
+                 <xmp class="code"> <div class="wrapper">
+        <div>One</div>
+        <div>Two</div>
+        <div>Three</div>
+        <div>Four</div>
+        <div>Five</div>
+    </div></xmp>
+             <p>I make the <code>.wrapper</code> a grid container.</p>                                
+               <xmp class=code>.wrapper {
+        display: grid;
+            }</xmp> 
+               <div class="wr">                    <div class="wrapper">
+                            <div class="ex">One</div>
+                            <div class="ex">Two</div>
+                            <div class="ex">Three</div>
+                            <div class="ex">Four</div>
+                            <div class="ex">Five</div>
+                    </div></div>
+                 <p>All the direct children are now grid items. In a web browser, you won’t see any difference to how these items are displayed before turning them into a grid, as grid has created a single column grid for the items. At this point, you may find it useful to work with the <strong>Grid Inspector</strong>, available as part of Firefox's Developer Tools. If you view this example in Firefox and inspect the grid, you will see a small icon next to the value <code>grid</code>. Click this and then the grid on this element will be overlaid in the browser window.</p>   
+                <p>As you learn and then work with the CSS Grid Layout this tool will give you a better idea of what is happening with your grids visually.</p>
+                <p>If we want to start making this more grid-like we need to add column tracks.</p>
+                                
+                </article>
+                <footer ><a href="#main-doc">UP</a></footer>
+            <br><hr>
+        </section>
+        <section class="main-section" id="Grid_Tracks">
+            <header>
+                <h1>Grid Tracks</h1>
+            </header>
+            <article>
+                <p>We define rows and columns on our grid with the <code>grid-template-columns</code> and <code>grid-template-rows</code> properties. These define grid tracks. A grid track is the space between any two lines on the grid. In the below image you can see a track highlighted – this is the first row track in our grid.</p>
+                <img src="https://mdn.mozillademos.org/files/14637/1_Grid_Track.png" alt="first row track in grid"/>
+                <p>I can add to our earlier example by adding the <code>grid-template-columns</code> property, then defining the size of the column tracks.</p>
+                <p>I have now created a grid with three 200-pixel-wide column tracks. The child items will be laid out on this grid one in each grid cell.</p>
+            <xmp class="code"><div class="wrapper">
+    <div>One</div>
+    <div>Two</div>
+    <div>Three</div>
+    <div>Four</div>
+    <div>Five</div>
+</div></xmp>
+<xmp class="code">.wrapper {
+    display: grid;
+    grid-template-columns: 200px 200px 200px;
+}  
+</xmp>
+<div class="wr">
+<div class="wrapper1">
+        <div class="ex">One</div>
+        <div class="ex">Two</div>
+        <div class="ex">Three</div>
+        <div class="ex">Four</div>
+        <div class="ex">Five</div>
+</div></div>
+            </article>
+            <footer ><a href="#main-doc">UP</a></footer>
+            <br><hr>
+        </section>
+        <section class="main-section" id="The_fr_Unit">
+            <header>
+                <h1>The fr Unit</h1>
+            </header>
+            <article>
+                <p>Tracks can be defined using any length unit. Grid also introduces an additional length unit to help us create flexible grid tracks. The new <code>fr</code> unit represents a fraction of the available space in the grid container. The next grid definition would create three equal width tracks that grow and shrink according to the available space.</p>
+ <xmp class="code"><div class="wrapper">
+    <div>One</div>
+    <div>Two</div>
+    <div>Three</div>
+    <div>Four</div>
+    <div>Five</div>
+</div></xmp>
+ <xmp class="code">.wrapper {
+     display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+ }  
+</xmp>
+<div class="wr">
+<div class="wrapper2">
+        <div class="ex">One</div>
+        <div class="ex">Two</div>
+        <div class="ex">Three</div>
+        <div class="ex">Four</div>
+        <div class="ex">Five</div>
+</div></div>
+<p>In this next example, we create a definition with a <code>2fr</code> track then two <code>1fr</code> tracks. The available space is split into four. Two parts are given to the first track and one part each to the next two tracks.</p>
+<xmp class="code">.wrapper {
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr;
+      }</xmp>
+      <p>In this final example, we mix absolute sized tracks with fraction units. The first track is 500 pixels, so the fixed width is taken away from the available space. The remaining space is divided into three and assigned in proportion to the two flexible tracks.</p>
+
+<xmp class="code">.wrapper {
+        display: grid;
+        grid-template-columns: 500px 1fr 2fr;
+      }</xmp>
+     
+            </article>
+            <footer ><a href="#main-doc">UP</a></footer>
+            <br><hr>
+        </section>
+        <section class="main-section" id="The_repeat()_notation">
+            <header>
+                <h1>The<code>repeat()</code> notation</h1>        
+            </header>
+            <article>
+<p>Large grids with many tracks can use the <code>repeat()</code> notation, to repeat all or a section of the track listing. For example the grid definition:</p>
+<xmp class="code">.wrapper {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+      }</xmp>  
+      <p>Can also be written as:</p>   
+<xmp class="code">.wrapper {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+      }</xmp> 
+      <p>Repeat notation can be used for a part of the track listing. In this next example I have created a grid with an initial 20-pixel track, then a repeating section of 6 <code>1fr</code> tracks then a final 20-pixel track.</p>    
+<xmp class="code">.wrapper {
+        display: grid;
+        grid-template-columns: 20px repeat(6, 1fr) 20px;
+      }</xmp>
+      <p>Repeat notation takes the track listing, and uses it to create a repeating pattern of tracks. In this next example, my grid will consist of 10 tracks, a <code>1fr</code> track, and then followed by a <code>2fr</code> track. This pattern will be repeated five times.</p>
+<xmp class="code">.wrapper {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr 2fr);
+      }</xmp>
+
+    </article>
+            <footer ><a href="#main-doc">UP</a></footer>
+            <br><hr>
+        </section>
+        <a class="info"  href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout">For more information about grid template see MDN web docs</a>
+    <br><hr>
+    </main> 
+    <!-- 
+<script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>  
+    -->
+</body>
+</html>
