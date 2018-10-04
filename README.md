@@ -1,5 +1,5 @@
 # techdoc
 
-Examle page for Codecamp traning
+Task from FreeCodeCamp
 
 https://marmishka.github.io/techdoc/
